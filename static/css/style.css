@@ -1,0 +1,353 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --primary-color: #2E7D32; /* A deep green */
+    --secondary-color: #4CAF50;
+    --light-green: #E8F5E9;
+    --dark-text: #333;
+    --light-text: #fff;
+    --border-color: #a5d6a7;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--dark-text);
+    background-color: #f9fbf9;
+    line-height: 1.6;
+}
+
+/* --- Utility Classes --- */
+.hidden {
+    display: none !important;
+}
+
+/* --- Buttons --- */
+.btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    padding: 12px 28px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #1B5E20;
+    transform: translateY(-2px);
+}
+
+.analyze-btn {
+    min-width: 180px;
+}
+
+/* --- Header & Hero Section --- */
+.hero-section {
+    position: relative;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--light-text);
+    background: url('../assets/tomabg.png') no-repeat center center/cover;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 80, 0, 0.6); /* Greenish overlay */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-logo {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* --- Main Content & Sections --- */
+main {
+    max-width: 900px;
+    margin: -80px auto 0 auto;
+    background: var(--light-text);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+}
+
+.content-section {
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.content-section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
+/* --- Uploader Section --- */
+#upload-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.upload-area {
+    width: 100%;
+    min-height: 250px;
+    border: 3px dashed var(--border-color);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem;
+    background-color: var(--light-green);
+    transition: border-color 0.3s, background-color 0.3s;
+    position: relative;
+}
+
+.upload-area.is-dragging {
+    border-color: var(--primary-color);
+    background-color: #dcedc8;
+}
+
+.upload-prompt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    color: #555;
+}
+
+.upload-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+}
+
+.upload-prompt p {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.upload-prompt span {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.image-preview-container {
+    position: relative;
+    width: 100%;
+    max-height: 400px;
+}
+
+#image-preview {
+    max-width: 100%;
+    max-height: 400px;
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+.remove-image-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 1.5rem;
+    line-height: 30px;
+    cursor: pointer;
+}
+
+/* --- Spinner --- */
+.spinner {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* --- Result Section --- */
+.result-container {
+    width: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 2rem;
+    background: var(--light-green);
+}
+
+.result-container h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.result-content {
+    margin-bottom: 1.5rem;
+}
+
+.result-label {
+    color: #555;
+    margin-bottom: 0.25rem;
+}
+
+.result-disease {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.confidence-bar {
+    width: 100%;
+    background-color: #c8e6c9;
+    border-radius: 20px;
+    height: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.confidence-level {
+    background-color: var(--secondary-color);
+    height: 100%;
+    border-radius: 20px;
+    transition: width 0.8s ease-in-out;
+}
+
+.confidence-text {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--dark-text);
+    font-weight: 600;
+}
+
+
+/* --- Features Section --- */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card {
+    padding: 2rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px var(--shadow-color);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 2rem;
+    background: #f1f1f1;
+    color: #666;
+}
+/* --- Help Button & Recommendation Styles --- */
+.help-btn {
+    background-color: var(--secondary-color); /* Use the secondary green */
+    margin-top: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.help-btn:hover {
+    background-color: #388E3C; /* A slightly darker green */
+}
+
+.recommendation-container {
+    width: 100%;
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    border-top: 2px solid var(--border-color);
+    text-align: left;
+}
+
+.recommendation-spinner {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #555;
+    font-size: 1rem;
+}
+
+.recommendation-content h5 { /* For headings from Gemini */
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.recommendation-content p {
+    margin-bottom: 0.75rem;
+    color: var(--dark-text);
+}
+
+.recommendation-content ul {
+    list-style-position: inside;
+    padding-left: 1rem;
+}
+
+.recommendation-content li {
+    margin-bottom: 0.5rem;
+}

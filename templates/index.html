@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOMACHECK - AI Tomato Disease Detection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <header class="hero-section">
+        <div class="hero-content">
+            <i class="fa-solid fa-leaf hero-logo"></i>
+            <h1>TOMACHECK</h1>
+            <p>AI-Powered Tomato Leaf Disease Detection</p>
+            <span>Upload an image of your tomato leaf and get an instant diagnosis.</span>
+        </div>
+    </header>
+
+    <main>
+        <section id="uploader-section" class="content-section">
+            <h2>Upload Leaf Image</h2>
+            <form id="upload-form">
+                <div class="upload-area" id="upload-area">
+                    <div class="upload-prompt" id="upload-prompt">
+                        <i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
+                        <p>Drop your image here, or click to browse</p>
+                        <span>Supports JPG, PNG, WEBP (max 10MB)</span>
+                        <button type="button" class="btn" id="select-image-btn">Select Image</button>
+                    </div>
+
+                    <div class="image-preview-container hidden" id="image-preview-container">
+                        <img src="" alt="Image Preview" id="image-preview">
+                        <button type="button" class="remove-image-btn" id="remove-image-btn">&times;</button>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button type="submit" class="btn analyze-btn hidden" id="analyze-btn">
+                        <span class="btn-text">Analyze Disease</span>
+                        <span class="spinner hidden"><i class="fa-solid fa-spinner fa-spin"></i> Analyzing...</span>
+                    </button>
+                </div>
+            </form>
+
+            <div class="result-container hidden" id="result-container">
+                <h3>Detection Result</h3>
+                <div class="result-content">
+                    <p class="result-label">Detected Disease</p>
+                    <p class="result-disease" id="result-disease">Bacterial Spot</p>
+                    <p class="result-label">Confidence Level</p>
+                    <div class="confidence-bar">
+                        <div class="confidence-level" id="confidence-level" style="width: 0%;"></div>
+                        <span class="confidence-text" id="confidence-text">0%</span>
+                    </div>
+                </div>
+            
+                <button type="button" class="btn help-btn" id="help-btn">
+                    <i class="fa-solid fa-seedling"></i> Help me manage this
+                </button>
+            
+                <div class="recommendation-container hidden" id="recommendation-container">
+                    <h4><i class="fa-solid fa-notes-medical"></i> Management Recommendations</h4>
+                    <div class="recommendation-spinner" id="recommendation-spinner">
+                        <i class="fa-solid fa-spinner fa-spin"></i> Getting advice from Gemini...
+                    </div>
+                    <div class="recommendation-content" id="recommendation-content">
+                        </div>
+                </div>
+                <button type="button" class="btn" id="analyze-another-btn">Analyze Another Image</button>
+            </div>
+
+        <section id="features-section" class="content-section">
+            <h2>Why Choose TOMACHECK?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fa-solid fa-brain feature-icon"></i>
+                    <h3>AI-Powered Detection</h3>
+                    <p>Advanced machine learning algorithms for accurate disease identification.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-bolt-lightning feature-icon"></i>
+                    <h3>Instant Results</h3>
+                    <p>Get a diagnosis in seconds, not days. Fast and reliable analysis.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-bullseye feature-icon"></i>
+                    <h3>High Accuracy</h3>
+                    <p>Trained on thousands of images for precise disease detection.</p>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <footer>
+        <p>&copy; 2025 TOMACHECK. Protecting your tomato crops with AI.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
